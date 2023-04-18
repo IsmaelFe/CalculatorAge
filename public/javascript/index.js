@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 
 const form = document.getElementById('ageForm')
 const resultado = document.getElementById('result')
+const classInput = 'errorInput'
+const classLabel = 'errorLabel'
 
 const validationSchema = Yup.object().shape(
     {
@@ -34,6 +36,10 @@ const validationSchema = Yup.object().shape(
     }
 )
 
+document.getElementById('day-error').textContent = ''
+document.getElementById('month-error').textContent = ''
+document.getElementById('year-error').textContent = ''
+
 const furmularioValidacion = async (event) => {
     event.preventDefault()
 
@@ -42,10 +48,29 @@ const furmularioValidacion = async (event) => {
 
     try {
         const values = await validationSchema.validate(Object.fromEntries(formData))
-        resultado.innerHTML = 'Hola';
+        //resultado.innerHTML = 'Hola';
+        document.getElementById('day-error').textContent = ''
+        document.getElementById('month-error').textContent = ''
+        document.getElementById('year-error').textContent = ''
+
+        document.getElementById('input-year').className = ''
+        document.getElementById('input-day').className = ''
+        document.getElementById('input-month').className = ''
+        
+        document.getElementById('label-day').className = ''
+        document.getElementById('label-month').className = ''
+        document.getElementById('label-year').className = ''
         console.log(values)
     } catch (error) {
-        console.error(error)
+        document.getElementById('input-year').className = classInput
+        document.getElementById('input-day').className = classInput
+        document.getElementById('input-month').className = classInput
+
+        document.getElementById('label-day').className = classLabel
+        document.getElementById('label-month').className = classLabel
+        document.getElementById('label-year').className = classLabel
+
+        document.getElementById(error.path + '-error').textContent = error.message
     }
     
 }

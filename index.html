@@ -13,16 +13,19 @@
       <form class="form-container" id="ageForm">
         <div class="validation-container">
           <div class="input-container">
-            <label for="day">DAY</label>
-            <input type="text" name="day" placeholder="DD">
+            <label for="day" id="label-day">DAY</label>
+            <input type="text" name="day" placeholder="DD" id="input-day" >
+            <span id="day-error"></span>
           </div>
           <div class="input-container">
-            <label for="month">MONTH</label>
-            <input type="text" name="month" placeholder="MM">
+            <label for="month" id="label-month">MONTH</label>
+            <input type="text" name="month" placeholder="MM" id="input-month" >
+            <span id="month-error"></span>
           </div>
           <div class="input-container">
-            <label for="year">YEAR</label>
-            <input type="text" name="year" placeholder="YYYY">
+            <label for="year" id="label-year">YEAR</label>
+            <input type="text" name="year" placeholder="YYYY" id="input-year" >
+            <span id="year-error"></span>
           </div>
         </div>
         <div class="second-container">
@@ -35,7 +38,7 @@
       </form>
       <div class="third-container">
         <div>
-          <span class="num-container" id="result">--</span><span>years</span>
+          <span class="num-container">--</span><span>years</span>
         </div>
         <div>
           <span class="num-container">--</span><span>months</span>

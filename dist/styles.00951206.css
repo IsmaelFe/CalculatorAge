@@ -40,11 +40,38 @@
 
 }
 
+.validation-container span {
+    width: 80px;
+    font-size: 0.7em;
+    white-space: nowrap;
+    height: 10px;
+    color: red;
+}
+
+.form-container .errorLabel {
+    color: red;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 4px;
+}
+
 .form-container label {
     color: #727273;
     font-weight: bold;
     font-size: 0.9em;
     letter-spacing: 4px;
+}
+
+.input-container .errorInput {
+    width: 85px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid red;
+    font-weight: 800;
+    font-size: 20px;
+    padding-left: 14px;
 }
 
 .input-container input {
@@ -105,5 +132,6 @@ img {
     color: #874CFE;
     
 }
+
 
 /*# sourceMappingURL=/styles.00951206.css.map */

@@ -2727,6 +2727,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var form = document.getElementById('ageForm');
 var resultado = document.getElementById('result');
+var classInput = 'errorInput';
+var classLabel = 'errorLabel';
 var validationSchema = Yup.object().shape({
   day: Yup.number().min(1, 'El dia es invalido').max(31, 'El dia es invalido').required('El dia es requerido').transform(function (value, originalValue) {
     if (originalValue === '') return null;
@@ -2743,6 +2745,9 @@ var validationSchema = Yup.object().shape({
     return value;
   })
 });
+document.getElementById('day-error').textContent = '';
+document.getElementById('month-error').textContent = '';
+document.getElementById('year-error').textContent = '';
 var furmularioValidacion = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
     var formData, values;
@@ -2757,19 +2762,34 @@ var furmularioValidacion = /*#__PURE__*/function () {
           return validationSchema.validate(Object.fromEntries(formData));
         case 6:
           values = _context.sent;
-          resultado.innerHTML = 'Hola';
+          //resultado.innerHTML = 'Hola';
+          document.getElementById('day-error').textContent = '';
+          document.getElementById('month-error').textContent = '';
+          document.getElementById('year-error').textContent = '';
+          document.getElementById('input-year').className = '';
+          document.getElementById('input-day').className = '';
+          document.getElementById('input-month').className = '';
+          document.getElementById('label-day').className = '';
+          document.getElementById('label-month').className = '';
+          document.getElementById('label-year').className = '';
           console.log(values);
-          _context.next = 14;
+          _context.next = 28;
           break;
-        case 11:
-          _context.prev = 11;
+        case 19:
+          _context.prev = 19;
           _context.t0 = _context["catch"](3);
-          console.error(_context.t0);
-        case 14:
+          document.getElementById('input-year').className = classInput;
+          document.getElementById('input-day').className = classInput;
+          document.getElementById('input-month').className = classInput;
+          document.getElementById('label-day').className = classLabel;
+          document.getElementById('label-month').className = classLabel;
+          document.getElementById('label-year').className = classLabel;
+          document.getElementById(_context.t0.path + '-error').textContent = _context.t0.message;
+        case 28:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[3, 11]]);
+    }, _callee, null, [[3, 19]]);
   }));
   return function furmularioValidacion(_x) {
     return _ref.apply(this, arguments);
@@ -2801,7 +2821,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52980" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54420" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

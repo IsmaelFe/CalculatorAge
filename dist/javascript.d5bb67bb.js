@@ -2726,7 +2726,6 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var form = document.getElementById('ageForm');
-var resultado = document.getElementById('result');
 var classInput = 'errorInput';
 var classLabel = 'errorLabel';
 var validationSchema = Yup.object().shape({
@@ -2748,6 +2747,17 @@ var validationSchema = Yup.object().shape({
 document.getElementById('day-error').textContent = '';
 document.getElementById('month-error').textContent = '';
 document.getElementById('year-error').textContent = '';
+var functionYear = function functionYear(year, month, day) {
+  var newYear = new Date();
+  var currentYear = new Date(year, month, day);
+  var diference = newYear - currentYear;
+  var ageYears = Math.floor(diference / (1000 * 60 * 60 * 24 * 365));
+  var ageMonths = Math.round(diference % (1000 * 60 * 60 * 24 * 365) / (1000 * 60 * 60 * 24 * 30.44));
+  var ageDays = Math.round(diference % (1000 * 60 * 60 * 24 * 30.44) / (1000 * 60 * 60 * 24));
+  document.getElementById('yearSpan').textContent = ageYears;
+  document.getElementById('monthSpan').textContent = ageMonths;
+  document.getElementById('daySpan').textContent = ageDays;
+};
 var furmularioValidacion = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
     var formData, values;
@@ -2762,7 +2772,7 @@ var furmularioValidacion = /*#__PURE__*/function () {
           return validationSchema.validate(Object.fromEntries(formData));
         case 6:
           values = _context.sent;
-          //resultado.innerHTML = 'Hola';
+          functionYear(values.year, values.month, values.day);
           document.getElementById('day-error').textContent = '';
           document.getElementById('month-error').textContent = '';
           document.getElementById('year-error').textContent = '';
@@ -2773,10 +2783,10 @@ var furmularioValidacion = /*#__PURE__*/function () {
           document.getElementById('label-month').className = '';
           document.getElementById('label-year').className = '';
           console.log(values);
-          _context.next = 28;
+          _context.next = 29;
           break;
-        case 19:
-          _context.prev = 19;
+        case 20:
+          _context.prev = 20;
           _context.t0 = _context["catch"](3);
           document.getElementById('input-year').className = classInput;
           document.getElementById('input-day').className = classInput;
@@ -2785,11 +2795,11 @@ var furmularioValidacion = /*#__PURE__*/function () {
           document.getElementById('label-month').className = classLabel;
           document.getElementById('label-year').className = classLabel;
           document.getElementById(_context.t0.path + '-error').textContent = _context.t0.message;
-        case 28:
+        case 29:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[3, 19]]);
+    }, _callee, null, [[3, 20]]);
   }));
   return function furmularioValidacion(_x) {
     return _ref.apply(this, arguments);
@@ -2821,7 +2831,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54420" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60184" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

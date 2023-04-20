@@ -2729,17 +2729,17 @@ var form = document.getElementById('ageForm');
 var classInput = 'errorInput';
 var classLabel = 'errorLabel';
 var validationSchema = Yup.object().shape({
-  day: Yup.number().min(1, 'El dia es invalido').max(31, 'El dia es invalido').required('El dia es requerido').transform(function (value, originalValue) {
+  day: Yup.number().min(1, 'Mus be a valid date').max(31, 'Mus be a valid date').required('This field is required').transform(function (value, originalValue) {
     if (originalValue === '') return null;
     return value;
   }),
-  month: Yup.number().min(1, 'Mes invalido').max(12, 'Mes invalido').required('El mes es requerido').transform(function (value, originalValue) {
+  month: Yup.number().min(1, 'Mus be a valid month').max(12, 'Mus be a valid month').required('This field is required').transform(function (value, originalValue) {
     if (originalValue === '') return null;
     return value;
   }),
   year: Yup.number().transform(function (value) {
     return isNaN(value) ? undefined : parseInt(value);
-  }).nullable().min(1900, 'El año es invalido').max(new Date().getFullYear(), "El a\xF1o debe ser menor o igual a ".concat(new Date().getFullYear())).required('El año es requerido').required('El año es requerido').transform(function (value, originalValue) {
+  }).nullable().min(1900, 'Must be in the past').max(new Date().getFullYear(), "The year must be less than or equal to ".concat(new Date().getFullYear())).required('El año es requerido').required('This field is required').transform(function (value, originalValue) {
     if (originalValue === '') return null;
     return value;
   })
@@ -2752,8 +2752,8 @@ var functionYear = function functionYear(year, month, day) {
   var currentYear = new Date(year, month, day);
   var diference = newYear - currentYear;
   var ageYears = Math.floor(diference / (1000 * 60 * 60 * 24 * 365));
-  var ageMonths = Math.round(diference % (1000 * 60 * 60 * 24 * 365) / (1000 * 60 * 60 * 24 * 30.44));
-  var ageDays = Math.round(diference % (1000 * 60 * 60 * 24 * 30.44) / (1000 * 60 * 60 * 24));
+  var ageMonths = Math.round(diference % (1000 * 60 * 60 * 24 * 365) / (1000 * 60 * 60 * 24 * 30.44)) + 1;
+  var ageDays = Math.round(diference % (1000 * 60 * 60 * 24 * 30.44) / (1000 * 60 * 60 * 24)) + 1;
   document.getElementById('yearSpan').textContent = ageYears;
   document.getElementById('monthSpan').textContent = ageMonths;
   document.getElementById('daySpan').textContent = ageDays;
@@ -2831,7 +2831,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60184" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55582" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

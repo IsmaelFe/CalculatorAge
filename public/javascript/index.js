@@ -7,17 +7,17 @@ const classLabel = 'errorLabel'
 const validationSchema = Yup.object().shape(
     {
         day: Yup.number()
-            .min(1, 'El dia es invalido')
-            .max(31, 'El dia es invalido')
-            .required('El dia es requerido')
+            .min(1, 'Mus be a valid date')
+            .max(31, 'Mus be a valid date')
+            .required('This field is required')
             .transform((value, originalValue) => {
                 if(originalValue === '') return null;
                 return value
             }),
         month: Yup.number()
-            .min(1, 'Mes invalido')
-            .max(12, 'Mes invalido')
-            .required('El mes es requerido')
+            .min(1, 'Mus be a valid month')
+            .max(12, 'Mus be a valid month')
+            .required('This field is required')
             .transform((value, originalValue) => {
                 if(originalValue === '') return null;
                 return value
@@ -25,9 +25,9 @@ const validationSchema = Yup.object().shape(
         year: Yup.number()
             .transform((value) => (isNaN(value)) ? undefined : parseInt(value))
             .nullable()
-            .min(1900, 'El año es invalido')
-            .max(new Date().getFullYear(), `El año debe ser menor o igual a ${new Date().getFullYear()}`).required('El año es requerido')
-            .required('El año es requerido')
+            .min(1900, 'Must be in the past')
+            .max(new Date().getFullYear(), `The year must be less than or equal to ${new Date().getFullYear()}`).required('El año es requerido')
+            .required('This field is required')
             .transform((value, originalValue) => {
                 if(originalValue === '') return null;
                 return value
@@ -46,8 +46,8 @@ const functionYear = (year, month, day) => {
 
     const diference = newYear - currentYear
     const ageYears = Math.floor(diference / (1000 * 60 * 60 * 24 * 365))
-    const ageMonths  = Math.round((diference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44))
-    const ageDays = Math.round((diference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24))
+    const ageMonths  = Math.round((diference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44)) + 1
+    const ageDays = Math.round((diference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24)) + 1
     
     document.getElementById('yearSpan').textContent = ageYears
     document.getElementById('monthSpan').textContent = ageMonths

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build"
+    "build": "parcel build index.html"
   },
   "author": "Abner Sul",
   "license": "ISC",

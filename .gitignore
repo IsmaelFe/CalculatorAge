@@ -12,9 +12,9 @@
 *.xd
 
 # Avoid your project being littered with annoying .DS_Store files!
+dis/
 .DS_Store
 .prettierignore
 /node_modules
 .cache/
 .vscode/
-dis/

@@ -2,7 +2,7 @@
   "name": "age-calculator-app-main",
   "version": "1.0.0",
   "description": "![Design preview for the Age calculator app coding challenge](./design/desktop-preview.jpg)",
-  "main": "index.html",
+  "main": "./src/javascript/index.js",
   "type": "module",
   "scripts": {
     "start": "parcel index.html",
